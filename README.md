@@ -1,13 +1,25 @@
 # Visual Studio Apache Cordova + TypeScript + RequireJS #
 
 ## Purpose: ##
-Use the readme to provide a roadmap for starting projects with TypeScript and RequireJS.  The instructions apply only to VS 2015. This is just a starting point, if you encounter any problems, please contact me. 
+Use the readme to provide a roadmap for starting projects with TypeScript, Apache Cordova and RequireJS.  The instructions apply only to VS 2015. This is just a starting point, if you encounter any problems, please contact me. 
 
 @deanbiele
 github.com/dbiele
 
 
 ## Getting Started: ##
+
+Basic Steps
+
+1. Create a VS Apache Cordova project
+2. Add package Manager and Task Runner
+3. Create Tasks
+3. Download d.ts files with TSD
+4. Install front end JavaScript with Bower
+5. Add RequireJS to index.html
+6. Create TypeScrupt code 
+7. Test loading jQuery with Require.JS 
+
 ###Creating a blank project###
 
 Create a blank Apache Cordova Apps project by selecting File > New Project 
@@ -171,30 +183,74 @@ Locate require.js and jquery.js in the bower_components folder.
 Copy and paste the files into the www/scripts folder.  We'll use HTML and Typescript to load these files.
 
 ##RequireJS and Cordova##
-###Adding require.JS to index###
+###Adding require.JS to index.html###
+Up till now we've modified the project, downloaded front end JavaScript and d.ts files. Now let's write some code.
 
 Open index.html in the `www` folder.
-Remove the following code.  We'll use require.js to load index which will then load cordova.js.
+Remove the following code. 
 ```
     <!-- Cordova reference, this is added to your app when it's built. -->
     <script src="cordova.js"></script>
     <script src="scripts/appBundle.js"></script>
 ```
-add
+We'll use require.js to load index.js.  Index.js will be used to load cordova.js and jQuery. To get started, use the following code.
 ```
 <script data-main="scripts/index" src="scripts/require.js"></script>
 ```
-
-`data-main` is the location of the first module that require load.
-
-![](documentation_img/note.PNG)require always assumes it's loading .js files so there's no need to include .js in the file name.
-
 ![](documentation_img/index.PNG)
+![](documentation_img/note.PNG)Note. `data-main` is the location of the first module that requireJS will load. Require always assumes it's loading .js files so there's no need to include .js in the file name.
 
+
+##Using TypeScript to write JavaScript for require.js##
+We'll use typescript to create the code that configures requireJS, write custom code and load 3rd party code. 
 ##Editing index.ts##
+Since the purpose on index.ts is to allow requireJS to load our JavaScript, delete the current code and add the following.
 
 ```
 /// <reference path='typings/requirejs/require.d.ts' />
+requirejs(['../cordova'], () => {
+
+});
+```
+This function will execute when all the dependencies have been loaded.  From here we can call functions, etc.
+
+In this example, we'll create a external module called "app".  We'll use it to test if jQuery loads correctly.  However, before we do, we'll have requireJS load the jQuery framework so we can access in all out external modules. Add the require.config code. This will load the jquery.js file and we can call it by referencing the jquery name.
+
+```/// <reference path='typings/requirejs/require.d.ts' />
+requirejs.config({
+    baseUrl: 'scripts',
+    paths: {
+        jquery: 'jquery'
+    }
+});
+requirejs(['../cordova'], () => {
+
+});```
+
+###Adding app external module and test jquery###
+Create a new app.ts.
+Add the following code.
+
+```
+import jq = require('jquery');
+module App {
+    "use strict";
+
+    export function initialize() {
+        console.log("Initialize Called. jQuery Version = " + jq.fn.jquery);
+
+    }
+}
+export = App;
+```
+![](documentation_img/app2.PNG)
+The code simply tests to see if we can reference the jQuery name from the code loaded by require.js.  You'll now see the intellisense appear when using the variable jq.
+
+Now that we've created an external model, add the app to index.ts and have it call inititalize().
+
+###Add app.ts to index.ts###
+Import the app module into index.ts and call initialize.  
+```/// <reference path='typings/requirejs/require.d.ts' />
 import App = require('./app');
 requirejs.config({
     baseUrl: 'scripts',
@@ -202,8 +258,38 @@ requirejs.config({
         jquery: 'jquery'
     }
 });
-require(['../cordova'], () => {
-    App.initialize();
-});
+requirejs(['../cordova'], () => {
+	App.initialize();
+});```
+
+```Add tsd.json```
+Unfortunately, by default VS2015 won't compile the typescript when we add require.js. We'll need to change the way VS2015 compiles Typescript.
+
+Add a new file and label it tsdconfig.json (SHIFT + F2).
+Add the following code.
 ```
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "module": "amd",
+    "target": "es5",
+    "removeComments": true,
+    "outDir": "./www/scripts/",
+    "sourceMap": true
+  },
+  "files": [
+    "./scripts/index.ts",
+    "./scripts/typings/tsd.d.ts"
+  ]
+}
+```
+
+
+###Testing on Ripple###
+Now let's test using Ripple.
+
+Select Debug > Android > Ripple - Nexus (Galaxy).  
+
+You will now see the console.log text in the output window. 
+
 
