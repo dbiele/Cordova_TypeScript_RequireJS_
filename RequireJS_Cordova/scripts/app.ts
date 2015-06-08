@@ -4,10 +4,10 @@
 module App {
     "use strict";
     /**
-    * Initialize is used to test if jQuery will display a version number in the console
+    * jQueryVersion is used to test if jQuery will display a version number in the console
     **/
-    export function initialize(){
-        console.log("Initialize Called. jQuery Version = " + jq.fn.jquery);
+    export function jQueryVersion(){
+        console.log("jQueryVersion Called. jQuery Version = " + jq.fn.jquery);
         
     }
 }

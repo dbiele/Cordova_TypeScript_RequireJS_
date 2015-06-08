@@ -17,7 +17,7 @@ requirejs(['../cordova'], () => {
     //This function will be called when all the dependencies
     //listed above are loaded. Note that this function could
     //be called before the page is loaded.
-    App.initialize();
+    App.jQueryVersion();
 });
 
 // More information about RequireJS can be found @ http://requirejs.org/docs/api.html
