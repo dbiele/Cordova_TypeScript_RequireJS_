@@ -24,6 +24,9 @@ Use VS 2015 Tools > Extensions and Updates to download and install the extension
 **Add New File** 
 >[Download Link](https://visualstudiogallery.msdn.microsoft.com/3f820e99-6c0d-41db-aa74-a18d9623b1f3?SRC=VSIDE)
 
+### Manually download the following
+---
+
 **Update TypeScript to 1.5**
 Download TypeScript 1.5 for Visual Studio.
 > [https://visualstudiogallery.msdn.microsoft.com/3e5ba71c-abea-4d00-b81b-a62de3ad3d53](https://visualstudiogallery.msdn.microsoft.com/3e5ba71c-abea-4d00-b81b-a62de3ad3d53)
