@@ -12,7 +12,7 @@ If you encounter any problems, have any suggestions, etc. please contact me.
 
 **github.com/dbiele**
 
-**Questions and Answers on StackOverflow:**
+[Questions? Issues? Problems? Use this GitHub link.](https://github.com/dbiele/Cordova_TypeScript_RequireJS_/issues)
 
 
 Extensions for VS 2015.
