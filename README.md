@@ -300,6 +300,14 @@ module App {
 export = App;
 ```
 ![](documentation_img/app2.PNG)
+Note. If you get a red highlight under import jq = require('jquery'); with the following error:
+
+```
+Cannot compile external modules unless the '--module' flag is provided.
+```
+Here's a solution. [http://stackoverflow.com/questions/29282269/using-external-modules-in-visual-studio-2015-ctp6-typescript-1-4](http://stackoverflow.com/questions/29282269/using-external-modules-in-visual-studio-2015-ctp6-typescript-1-4)
+
+
 The code simply tests to see if we can reference the jQuery name from the code loaded by require.js.  You'll now see the intellisense appear when using the variable jq.
 
 Now that we've created an external model, add the app to index.ts and have it call jQueryVersion().
