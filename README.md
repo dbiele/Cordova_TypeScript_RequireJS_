@@ -13,7 +13,7 @@ If you encounter any problems, have any suggestions, etc. please contact me.
 **github.com/dbiele**
 
 **Questions and Answers on StackOverflow:**
-[Stack Overflow Link](http://stackoverflow.com/questions/30716768/demo-questions-about-vs-apache-cordova-typescript-requirejs)
+
 
 Extensions for VS 2015.
 -----
