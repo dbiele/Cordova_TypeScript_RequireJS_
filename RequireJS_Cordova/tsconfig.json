@@ -1,0 +1,14 @@
+﻿{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "module": "amd",
+    "target": "es5",
+    "removeComments": true,
+    "outDir": "./www/scripts/",
+    "sourceMap": true
+  },
+  "files": [
+    "./scripts/index.ts",
+    "./scripts/typings/tsd.d.ts"
+  ]
+}
