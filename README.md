@@ -211,11 +211,11 @@ Save and close the file.
 ![](documentation_img/note.PNG)Note. Once the paths are changed, no changed need to be made to tsd.json.  All updates will be done through the command prompt and TSD.
 
 ###Reinstall the d.ts files using Gulp###
-Now run the tsd task in the Task Runner Explorer (View > Other Windows > Task Runner Explorer).  Running the tsd task will download and place the files into scripts/typings. This is alot of work just to download d.ts files, but when sharing projects it's important!
+Now run the tsd task in the Task Runner Explorer (View > Other Windows > Task Runner Explorer).  Running the tsd task will download and place the files into scripts/typings. This is alot of work just to download d.ts files, but when sharing projects it's important! You can also use `tsd reinstall -so` to reinstall the d.ts files.
 ![](documentation_img/tsd_reinstall.PNG)
 
 ###Installing new d.ts files###
-When new d.ts files are need for a project, use the command prompt to download and install. Example `tsd install winjs -s`
+When new d.ts files are needed for a project, use the command prompt to download and install. Example `tsd install winjs -s`
 ![](documentation_img/tsd_winjs.PNG)
 
 ##Use Bower##
